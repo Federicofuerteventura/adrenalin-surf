@@ -1,0 +1,396 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Design tokens ─────────────────────────────────────────── */
+:root {
+  --brand-orange:  #E85F33;
+  --orange-hover:  #CF5229;
+  --orange-tint:   #FFE6DC;
+  --navy:          #0B2A3A;
+  --navy-light:    #0F3347;
+  --bg:            #F7F7F5;
+  --text:          #0F172A;
+  --muted:         #64748B;
+  --border:        #E5E7EB;
+  --white:         #FFFFFF;
+
+  --radius-sm:  0.375rem;
+  --radius-md:  0.75rem;
+  --radius-lg:  1rem;
+  --radius-xl:  1.5rem;
+
+  --shadow-card:      0 2px 12px 0 rgba(11,42,58,0.08);
+  --shadow-card-hover: 0 8px 30px 0 rgba(11,42,58,0.14);
+  --shadow-orange:    0 4px 20px 0 rgba(232,95,51,0.35);
+
+  --transition-base: 200ms ease;
+  --transition-smooth: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Base resets ────────────────────────────────────────────── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Focus visible — keyboard navigation */
+  :focus-visible {
+    outline: 3px solid var(--brand-orange);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Smooth scroll offset for fixed header */
+  [id] {
+    scroll-margin-top: 5rem;
+  }
+}
+
+/* ─── Utility classes ────────────────────────────────────────── */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .section-padding {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  @screen md {
+    .section-padding {
+      padding-top: 7rem;
+      padding-bottom: 7rem;
+    }
+  }
+
+  .container-site {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  @screen md {
+    .container-site {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  .text-gradient-orange {
+    background: linear-gradient(135deg, var(--brand-orange) 0%, #F0833A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-hero-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(11, 42, 58, 0.55) 0%,
+      rgba(11, 42, 58, 0.35) 50%,
+      rgba(11, 42, 58, 0.65) 100%
+    );
+  }
+}
+
+/* ─── Component classes ──────────────────────────────────────── */
+@layer components {
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    line-height: 1;
+    border-radius: var(--radius-md);
+    padding: 0.75rem 1.75rem;
+    transition: all var(--transition-smooth);
+    cursor: pointer;
+    text-decoration: none;
+    border: 2px solid transparent;
+    white-space: nowrap;
+  }
+
+  .btn-primary {
+    background-color: var(--brand-orange);
+    color: var(--white);
+    border-color: var(--brand-orange);
+    box-shadow: var(--shadow-orange);
+  }
+  .btn-primary:hover {
+    background-color: var(--orange-hover);
+    border-color: var(--orange-hover);
+    box-shadow: 0 6px 28px 0 rgba(232,95,51,0.45);
+    transform: translateY(-1px);
+  }
+  .btn-primary:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-orange);
+  }
+
+  .btn-secondary {
+    background-color: transparent;
+    color: var(--white);
+    border-color: rgba(255,255,255,0.7);
+  }
+  .btn-secondary:hover {
+    background-color: rgba(255,255,255,0.1);
+    border-color: var(--white);
+  }
+
+  .btn-outline {
+    background-color: transparent;
+    color: var(--brand-orange);
+    border-color: var(--brand-orange);
+  }
+  .btn-outline:hover {
+    background-color: var(--brand-orange);
+    color: var(--white);
+  }
+
+  .btn-navy {
+    background-color: var(--navy);
+    color: var(--white);
+    border-color: var(--navy);
+  }
+  .btn-navy:hover {
+    background-color: var(--navy-light);
+    border-color: var(--navy-light);
+    transform: translateY(-1px);
+  }
+
+  .btn-lg {
+    padding: 1rem 2.25rem;
+    font-size: 1.0625rem;
+    border-radius: var(--radius-lg);
+  }
+  .btn-sm {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.875rem;
+  }
+
+  /* ── Glow modifier — add on top of any .btn variant ────────── */
+  /* Usage: className="btn btn-primary btn-lg btn-glow"           */
+  .btn-glow {
+    position: relative;
+    z-index: 0;
+  }
+
+  /* Shared pseudo-element base */
+  .btn-glow::before,
+  .btn-glow::after {
+    content: '';
+    position: absolute;
+    border-radius: inherit;
+  }
+
+  /* :before — animated gradient glow, sits outside & behind */
+  .btn-glow::before {
+    inset: -3px;
+    background: linear-gradient(
+      90deg,
+      #ff6b35,
+      var(--brand-orange),
+      #ffba08,
+      #CF5229,
+      #ff3300,
+      #ff6b35
+    );
+    background-size: 400%;
+    filter: blur(10px);
+    opacity: 0;
+    z-index: -1;
+    animation: glowing 20s linear infinite paused;
+    transition: opacity 300ms ease;
+  }
+
+  /* :after — inherits current button background, covers the glow */
+  /* in the centre so only the blurred edge is visible            */
+  .btn-glow::after {
+    inset: 0;
+    background: inherit;
+    z-index: -1;
+  }
+
+  /* Activate on hover */
+  .btn-glow:hover::before {
+    opacity: 1;
+    animation-play-state: running;
+  }
+
+  /* Activate on keyboard focus (accessibility) */
+  .btn-glow:focus-visible::before {
+    opacity: 1;
+    animation-play-state: running;
+  }
+
+  /* Reduced motion — disable animation, keep static glow */
+  @media (prefers-reduced-motion: reduce) {
+    .btn-glow::before {
+      animation: none;
+      background: var(--brand-orange);
+      filter: blur(12px);
+    }
+  }
+  /* ───────────────────────────────────────────────────────────── */
+
+  /* ── Card image overlay ─────────────────────────────────────── */
+  /* Usage: add class="card-image-overlay" to the gradient div    */
+  /* inside any image card to get a consistent, non-muddy overlay  */
+  .card-image-overlay {
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.58) 0%,    /* solid base — behind badge + title      */
+      rgba(0, 0, 0, 0.45) 22%,   /* still behind subtitle                  */
+      rgba(0, 0, 0, 0.12) 50%,   /* soft transition                        */
+      transparent         75%    /* photo clean from midpoint upward        */
+    );
+  }
+  /* ───────────────────────────────────────────────────────────── */
+
+  /* Cards */
+  .card {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    transition: box-shadow var(--transition-smooth), transform var(--transition-smooth);
+  }
+  .card:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-4px);
+  }
+
+  /* Badges / chips */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.625rem;
+    border-radius: 999px;
+  }
+  .badge-orange {
+    background-color: var(--orange-tint);
+    color: var(--brand-orange);
+  }
+  .badge-navy {
+    background-color: rgba(11,42,58,0.08);
+    color: var(--navy);
+  }
+  .badge-green {
+    background-color: #DCFCE7;
+    color: #15803D;
+  }
+
+  /* Section label */
+  .section-label {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--brand-orange);
+  }
+
+  /* Divider */
+  .divider {
+    width: 3rem;
+    height: 3px;
+    background-color: var(--brand-orange);
+    border-radius: 999px;
+    margin-top: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Stars */
+  .star-filled { color: #F59E0B; }
+  .star-empty  { color: var(--border); }
+}
+
+/* ─── Custom scrollbar ──────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+/* ─── Animations ─────────────────────────────────────────────── */
+@keyframes glowing {
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up    { animation: fadeUp    0.55s ease-out both; }
+.animate-fade-in    { animation: fadeIn    0.4s  ease-out both; }
+.animate-slide-down { animation: slideDown 0.3s  ease-out both; }
+
+.animation-delay-100 { animation-delay: 100ms; }
+.animation-delay-200 { animation-delay: 200ms; }
+.animation-delay-300 { animation-delay: 300ms; }
+.animation-delay-400 { animation-delay: 400ms; }
+.animation-delay-500 { animation-delay: 500ms; }
+
+/* ─── FAQ accordion ─────────────────────────────────────────── */
+details > summary { list-style: none; }
+details > summary::-webkit-details-marker { display: none; }
+details[open] > summary .accordion-icon { transform: rotate(180deg); }
+.accordion-icon { transition: transform var(--transition-smooth); }
+
+/* ─── Gallery lightbox ──────────────────────────────────────── */
+.gallery-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 15, 20, 0.92);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
