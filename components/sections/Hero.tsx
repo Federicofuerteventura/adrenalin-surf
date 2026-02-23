@@ -49,7 +49,7 @@ export default function Hero() {
 
           {/* Subcopy */}
           <p className="mt-5 text-lg md:text-xl text-white/80 leading-relaxed max-w-xl animate-fade-up animation-delay-200">
-            Surf lessons, camps, and board rentals in La Pared — one of Fuerteventura&apos;s most consistent breaks.
+            Surf lessons, surf training, camps, and board rentals in La Pared — one of Fuerteventura&apos;s most consistent breaks.
             Certified instructors. All equipment included. Real time in the water.
           </p>
 

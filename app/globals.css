@@ -272,10 +272,10 @@
   .card-image-overlay {
     background: linear-gradient(
       to top,
-      rgba(0, 0, 0, 0.58) 0%,    /* solid base — behind badge + title      */
-      rgba(0, 0, 0, 0.45) 22%,   /* still behind subtitle                  */
-      rgba(0, 0, 0, 0.12) 50%,   /* soft transition                        */
-      transparent         75%    /* photo clean from midpoint upward        */
+      rgba(0, 0, 0, 0.78) 0%,    /* solid base — behind badge + title      */
+      rgba(0, 0, 0, 0.62) 28%,   /* still behind subtitle                  */
+      rgba(0, 0, 0, 0.18) 55%,   /* soft transition                        */
+      transparent         80%    /* photo clean from midpoint upward        */
     );
   }
   /* ───────────────────────────────────────────────────────────── */

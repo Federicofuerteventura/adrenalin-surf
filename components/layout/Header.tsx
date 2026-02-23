@@ -33,84 +33,86 @@ export default function Header() {
   }, [open])
 
   return (
-    <header
-      className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        'border-b border-black/[0.06]',
-        scrolled
-          ? 'bg-[#FFFDF9]/[0.92] backdrop-blur-md shadow-[0_2px_16px_0_rgba(11,42,58,0.08)] py-2'
-          : 'bg-[#FFFDF9]/[0.62] backdrop-blur-md py-3'
-      )}
-      role="banner"
-    >
-      <div className="container-site">
-        <div className="flex items-center justify-between gap-4">
+    <>
+      <header
+        className={cn(
+          'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+          'border-b border-white/[0.10]',
+          scrolled
+            ? 'bg-[#0B2A3A] shadow-[0_2px_16px_0_rgba(0,0,0,0.25)] py-2'
+            : 'bg-[#0B2A3A]/90 backdrop-blur-md py-3'
+        )}
+        role="banner"
+      >
+        <div className="container-site">
+          <div className="flex items-center justify-between gap-4">
 
-          {/* Logo */}
-          <Link href="/" aria-label="Adrenalin Surf School — home" className="flex-shrink-0">
-            <Image
-              src="/images/logo.png"
-              alt="Adrenalin Surf School"
-              width={140}
-              height={44}
-              className="h-9 w-auto object-contain brightness-100"
-              priority
-            />
-          </Link>
-
-          {/* Desktop nav */}
-          <nav
-            className="hidden lg:flex items-center gap-1"
-            aria-label="Main navigation"
-          >
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  'px-3.5 py-2 rounded-md text-sm font-medium text-[#0B2A3A]/75',
-                  'hover:text-[#E85F33] hover:bg-[#E85F33]/[0.07]',
-                  'transition-colors duration-150',
-                  'focus-visible:outline-orange-500'
-                )}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-
-          {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center gap-3">
-            <a
-              href="tel:+34XXXXXXXXX"
-              className="flex items-center gap-1.5 text-sm text-[#0B2A3A]/55 hover:text-[#0B2A3A] transition-colors"
-              aria-label="Call us"
-            >
-              <Phone size={15} />
-              <span>+34 XXX XXX XXX</span>
-            </a>
-            <Link
-              href="/contact"
-              className="btn btn-primary btn-sm"
-            >
-              Book a Lesson
+            {/* Logo */}
+            <Link href="/" aria-label="Adrenalin Surf School — home" className="flex-shrink-0">
+              <Image
+                src="/images/logo.png"
+                alt="Adrenalin Surf School"
+                width={140}
+                height={44}
+                className="h-9 w-auto object-contain brightness-0 invert"
+                priority
+              />
             </Link>
+
+            {/* Desktop nav */}
+            <nav
+              className="hidden lg:flex items-center gap-1"
+              aria-label="Main navigation"
+            >
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    'px-3.5 py-2 rounded-md text-sm font-medium text-white/80',
+                    'hover:text-[#E85F33] hover:bg-white/[0.07]',
+                    'transition-colors duration-150',
+                    'focus-visible:outline-orange-500'
+                  )}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+
+            {/* Desktop CTA */}
+            <div className="hidden lg:flex items-center gap-3">
+              <a
+                href="tel:+34XXXXXXXXX"
+                className="flex items-center gap-1.5 text-sm text-white/60 hover:text-white transition-colors"
+                aria-label="Call us"
+              >
+                <Phone size={15} />
+                <span>+34 XXX XXX XXX</span>
+              </a>
+              <Link
+                href="/contact"
+                className="btn btn-primary btn-sm"
+              >
+                Book a Lesson
+              </Link>
+            </div>
+
+            {/* Mobile hamburger */}
+            <button
+              className="lg:hidden p-2 rounded-md text-white/70 hover:text-white hover:bg-white/[0.07] transition-colors"
+              onClick={() => setOpen(!open)}
+              aria-label={open ? 'Close menu' : 'Open menu'}
+              aria-expanded={open}
+              aria-controls="mobile-menu"
+            >
+              {open ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
-
-          {/* Mobile hamburger */}
-          <button
-            className="lg:hidden p-2 rounded-md text-[#0B2A3A]/70 hover:text-[#0B2A3A] hover:bg-[#0B2A3A]/[0.07] transition-colors"
-            onClick={() => setOpen(!open)}
-            aria-label={open ? 'Close menu' : 'Open menu'}
-            aria-expanded={open}
-            aria-controls="mobile-menu"
-          >
-            {open ? <X size={24} /> : <Menu size={24} />}
-          </button>
         </div>
-      </div>
+      </header>
 
-      {/* Mobile drawer */}
+      {/* Mobile drawer — outside <header> to avoid backdrop-filter stacking context issue */}
       <div
         id="mobile-menu"
         className={cn(
@@ -176,6 +178,6 @@ export default function Header() {
           </div>
         </nav>
       </div>
-    </header>
+    </>
   )
 }

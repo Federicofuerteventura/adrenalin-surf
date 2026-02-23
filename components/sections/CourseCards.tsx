@@ -104,14 +104,14 @@ export default function CourseCards() {
                     {service.badge}
                   </span>
                   <h3
-                    className="text-xl font-bold leading-tight"
-                    style={{ textShadow: '0 1px 3px rgba(0,0,0,0.70), 0 2px 8px rgba(0,0,0,0.45), 0 4px 18px rgba(0,0,0,0.25)' }}
+                    className="text-xl font-bold leading-tight text-white"
+                    style={{ textShadow: '0 1px 2px rgba(0,0,0,1), 0 2px 8px rgba(0,0,0,0.85), 0 4px 24px rgba(0,0,0,0.65), 0 8px 40px rgba(0,0,0,0.40)' }}
                   >
                     {service.title}
                   </h3>
                   <p
-                    className="text-sm text-white/80 mt-1"
-                    style={{ textShadow: '0 1px 3px rgba(0,0,0,0.60), 0 2px 8px rgba(0,0,0,0.30)' }}
+                    className="text-sm text-white/90 mt-1"
+                    style={{ textShadow: '0 1px 2px rgba(0,0,0,0.95), 0 2px 10px rgba(0,0,0,0.70)' }}
                   >
                     {service.subtitle}
                   </p>

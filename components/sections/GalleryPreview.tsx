@@ -4,11 +4,11 @@ import { ArrowRight } from 'lucide-react'
 
 // Placeholder gallery items — replace src with real images
 const galleryItems = [
-  { src: '/images/hero-surf.png', alt: 'Surfer riding a wave at La Pared, Fuerteventura', span: 'col-span-2 row-span-2' },
-  { src: '/images/hero-surf.png', alt: 'Surf instructor coaching a beginner student', span: '' },
-  { src: '/images/hero-surf.png', alt: 'Group surf lesson at sunset on the beach', span: '' },
-  { src: '/images/hero-surf.png', alt: 'Aerial view of La Pared beach waves', span: '' },
-  { src: '/images/hero-surf.png', alt: 'Student successfully standing up on surfboard for the first time', span: '' },
+  { src: '/images/gallery/preview-1.webp', alt: 'Surfer riding a wave at La Pared, Fuerteventura', span: 'col-span-2 row-span-2' },
+  { src: '/images/gallery/preview-2.webp', alt: 'Surf instructor coaching a beginner student', span: '' },
+  { src: '/images/gallery/preview-3.webp', alt: 'Group surf lesson at sunset on the beach', span: '' },
+  { src: '/images/gallery/preview-4.webp', alt: 'Aerial view of La Pared beach waves', span: '' },
+  { src: '/images/gallery/preview-5.webp', alt: 'Student successfully standing up on surfboard for the first time', span: '' },
 ]
 
 export default function GalleryPreview() {
